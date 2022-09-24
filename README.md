@@ -94,7 +94,6 @@ const WrappedListComponent = ({
     setNewItems(items);
   }, [items]);
 
-
   const handleClick = (index) => {
     let newArray = [...newItems];
     newArray[index].isSelected = !newArray[index].isSelected
@@ -105,7 +104,6 @@ const WrappedListComponent = ({
     <ul style={{ textAlign: 'left' }}>
       {newItems.map((item, index) => (
         <SingleListItem
-        // Problem - 5: Add key for fixing an error
           key={index}
           onClickHandler={handleClick}
           text={item.text}

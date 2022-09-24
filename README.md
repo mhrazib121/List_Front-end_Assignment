@@ -53,6 +53,7 @@ WrappedListComponent.defaultProps = {
 ### Question 3: Please fix, optimize, and/or modify the component as much as you think is necessary.
 
 ```sh
+
 import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 
@@ -148,4 +149,5 @@ WrappedListComponent.defaultProps = {
 const List = memo(WrappedListComponent);
 
 export default List;
+
 ```

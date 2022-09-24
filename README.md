@@ -1,4 +1,4 @@
-###Question - 1: Explain what the simple List component does.
+### Question - 1: Explain what the simple List component does.
 
 Answare:
 List component is used to store all items. Bassically items is an array of object. In this component memo method are used. List items are memorized by memo(WrappedListComponent).
@@ -7,19 +7,19 @@ index. In SingleListItem onClick event are used to call onClickHandeler function
 If item is selected then background color of list will green and if not selected then bckground color will be red.
 
 
-Question -2-What problems / warnings are there with code?
+### Question -2-What problems / warnings are there with code?
 
-Errors->
 
-Problem 1 Syntax mistake
+### `Problem 1 Syntax mistake`
 
 const [setSelectedIndex, selectedIndex] = useState();
 
-Problem 2- onClickHandler are called directly. It should call with a callback function
+### `Problem 2- onClickHandler are called directly. It should call with a callback function`
 onClick={onClickHandler(index)}
 
-Problem 3- Each child in a list should have a unique "key" prop.
-<ul style={{ textAlign: "left" }}>
+### `Problem 3- Each child in a list should have a unique "key" prop.`
+
+<ul style={{ textAlign: "left" }}> 
             {items.map((item, index) => (
                 <SingleListItem
                     onClickHandler={() => handleClick(index)}
@@ -27,18 +27,20 @@ Problem 3- Each child in a list should have a unique "key" prop.
                     index={index}
                     isSelected={selectedIndex}
                     key={index}
-       />
+                    />
         ))}
 </ul>
 
-Problem 4-: PropTypes was wrrong. array should be arrayOf and shapeOf should be shape
+### `Problem 4-: PropTypes was wrrong. array should be arrayOf and shapeOf should be shape`
+
 WrappedListComponent.propTypes = {
   items: PropTypes.array(PropTypes.shapeOf({
     text: PropTypes.string.isRequired,
   })),
 };
 
-Problem 5: items was declere as null. So map Cannot read properties of null
+### `Problem 5: items was declere as null. So map Cannot read properties of null`
+
 WrappedListComponent.defaultProps = {
   items: null,
 };
@@ -47,7 +49,9 @@ WrappedListComponent.defaultProps = {
 
 
 ======================================================
-Question 3: Please fix, optimize, and/or modify the component as much as you think is necessary.
+
+### `Question 3: Please fix, optimize, and/or modify the component as much as you think is necessary.`
+
 import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 
@@ -61,8 +65,7 @@ const WrappedSingleListItem = ({
   return (
     <li
       style={{ backgroundColor: isSelected === true ? 'green' : 'red' }}
-      // Problem -1: (Have to create a callback function)
-      // onClick={onClickHandler(index)}
+
       onClick={() => onClickHandler(index)}
     >
       {text}
@@ -83,22 +86,14 @@ const SingleListItem = memo(WrappedSingleListItem);
 const WrappedListComponent = ({
   items,
 }) => {
-  // problem-2 : (useState() syntex was wrrong and useState is changed for obtimization)
-  // const [setSelectedIndex, selectedIndex] = useState();
 
   const [newItems, setNewItems,] = useState([]);
 
   useEffect(() => {
-    // problem -3: Changed for modify.
-    // setSelectedIndex(null);
     setNewItems(items);
   }, [items]);
 
-  
-// Problem - 4: changed handleClick functionality for optimization
-// const handleClick = index => {
-//   setSelectedIndex(index);
-// };
+
   const handleClick = (index) => {
     let newArray = [...newItems];
     newArray[index].isSelected = !newArray[index].isSelected
@@ -122,8 +117,7 @@ const WrappedListComponent = ({
 };
 
 WrappedListComponent.propTypes = {
-  // Problem -6: array should be arrayOf and shapeOf should be shape
-  // items: PropTypes.array(PropTypes.shapeOf({
+
   items: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     isSelected: PropTypes.bool,
@@ -131,8 +125,7 @@ WrappedListComponent.propTypes = {
 };
 
 WrappedListComponent.defaultProps = {
-  // Problem-7: Items can't be null. Because map function can't work in null array
-  // items: null,
+    
   items: [
     {
       text: "Test-1",

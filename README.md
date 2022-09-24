@@ -1,4 +1,5 @@
-Question - 1: Explain what the simple List component does.
+###Question - 1: Explain what the simple List component does.
+
 Answare:
 List component is used to store all items. Bassically items is an array of object. In this component memo method are used. List items are memorized by memo(WrappedListComponent).
 In WrappedListComponent, map function is used for getting single item and single item are passed to SingleListItem with key, onClickHandler functiona and

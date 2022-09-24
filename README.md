@@ -1,4 +1,4 @@
-### Question - 1: Explain what the simple List component does.
+### `Question - 1: Explain what the simple List component does.`
 
 Answare:
 List component is used to store all items. Bassically items is an array of object. In this component memo method are used. List items are memorized by memo(WrappedListComponent).
@@ -7,17 +7,17 @@ index. In SingleListItem onClick event are used to call onClickHandeler function
 If item is selected then background color of list will green and if not selected then bckground color will be red.
 
 
-### Question -2-What problems / warnings are there with code?
+### `Question -2-What problems / warnings are there with code?`
 
 
-### `Problem 1 Syntax mistake`
+### Problem 1 Syntax mistake
 
 const [setSelectedIndex, selectedIndex] = useState();
 
-### `Problem 2- onClickHandler are called directly. It should call with a callback function`
+### Problem 2- onClickHandler are called directly. It should call with a callback function
 onClick={onClickHandler(index)}
 
-### `Problem 3- Each child in a list should have a unique "key" prop.`
+### Problem 3- Each child in a list should have a unique "key" prop.
 
 <ul style={{ textAlign: "left" }}> 
             {items.map((item, index) => (
@@ -31,7 +31,7 @@ onClick={onClickHandler(index)}
         ))}
 </ul>
 
-### `Problem 4-: PropTypes was wrrong. array should be arrayOf and shapeOf should be shape`
+### Problem 4-: PropTypes was wrrong. array should be arrayOf and shapeOf should be shape.
 
 WrappedListComponent.propTypes = {
   items: PropTypes.array(PropTypes.shapeOf({
@@ -39,7 +39,7 @@ WrappedListComponent.propTypes = {
   })),
 };
 
-### `Problem 5: items was declere as null. So map Cannot read properties of null`
+### Problem 5: items was declere as null. So map Cannot read properties of null
 
 WrappedListComponent.defaultProps = {
   items: null,
@@ -50,8 +50,9 @@ WrappedListComponent.defaultProps = {
 
 ======================================================
 
-### `Question 3: Please fix, optimize, and/or modify the component as much as you think is necessary.`
+### Question 3: Please fix, optimize, and/or modify the component as much as you think is necessary.
 
+```sh
 import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 
@@ -149,3 +150,4 @@ WrappedListComponent.defaultProps = {
 const List = memo(WrappedListComponent);
 
 export default List;
+```
